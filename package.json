@@ -1,0 +1,20 @@
+{
+  "name": "hugh_thornhill_p0",
+  "version": "1.0.0",
+  "description": "High school tutor schedule API",
+  "main": "index.ts",
+  "scripts": {
+    "start": "node ./index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/200427-Revature-Training/hugh_thornhill_p0.git"
+  },
+  "author": "Hugh Thornhill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/200427-Revature-Training/hugh_thornhill_p0/issues"
+  },
+  "homepage": "https://github.com/200427-Revature-Training/hugh_thornhill_p0#readme"
+}

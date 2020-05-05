@@ -13,17 +13,40 @@ app.use((request, response, next) => {
     next();
 })
 
+// sample data
 const users = [{
     firstName: 'Hugh',
     lastNamne: 'Thornhill'
 }]
 
+// let students = [{
+//     firstName: 'Bobby',
+//     lastName: 'Hill',
+//     age: 15,
+//     grade: 'freshman'
+// }]
+
+// let subjects = [{
+//     name: 'history',
+//     specific: 'World'
+// }]
+
+// let appointments = [{
+//     date: "3-2-20",
+//     timeStart: "2:00 PM",
+//     timeEnd: "3:00 PM"
+// }]
+
+
+// GET methods
 app.get('/users',(request, response, next) => {
-    console.log('Request received, processing app.get');
+    console.log('Request received, processing app.get for users');
     response.json(users);
     next();
 })
 
+
+// POST methods
 app.post('/users',(request, response, next) => {
     console.log(request.body);
     const body = request.body;

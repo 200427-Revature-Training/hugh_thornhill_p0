@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/200427-Revature-Training/hugh_thornhill_p0#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "node": "^14.0.0",
     "tslint": "^6.1.2"
   },

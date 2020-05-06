@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import { userRouter } from './routers/user-router';
 
 const app = express();
 
@@ -13,12 +14,9 @@ app.use((request, response, next) => {
     next();
 })
 
-// sample data
-const users = [{
-    firstName: 'Hugh',
-    lastNamne: 'Thornhill'
-}]
+app.use('/users', userRouter)
 
+// sample data
 // let students = [{
 //     firstName: 'Bobby',
 //     lastName: 'Hill',
@@ -38,25 +36,25 @@ const users = [{
 // }]
 
 
-// GET methods
-app.get('/users',(request, response, next) => {
-    console.log('Request received, processing app.get for users');
-    response.json(users);
-    next();
-})
+// // GET methods
+// app.get('/users',(request, response, next) => {
+//     console.log('Request received, processing app.get for users');
+//     response.json(users);
+//     next();
+// })
 
 
-// POST methods
-app.post('/users',(request, response, next) => {
-    console.log(request.body);
-    const body = request.body;
-    if(body) {
-        users.push(body);
-    }
-    console.log('Request received - processing at app.post');
-    response.send('Processed by app.post');
-    next();
-})
+// // POST methods
+// app.post('/users',(request, response, next) => {
+//     console.log(request.body);
+//     const body = request.body;
+//     if(body) {
+//         users.push(body);
+//     }
+//     console.log('Request received - processing at app.post');
+//     response.send('Processed by app.post');
+//     next();
+// })
 
 app.listen(port, () => {
     console.log(`Listening on port: ${port}`);

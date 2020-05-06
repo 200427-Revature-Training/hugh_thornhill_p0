@@ -2,7 +2,7 @@
   "name": "hugh_thornhill_p0",
   "version": "1.0.0",
   "description": "High school tutor schedule API",
-  "main": "index.ts",
+  "main": "app.ts",
   "scripts": {
     "start": "nodemon ./src/app.ts",
     "test": "jest --verbose",

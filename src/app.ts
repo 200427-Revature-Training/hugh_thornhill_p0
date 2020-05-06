@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import { userRouter } from './routers/user-router';
 
 const app = express();
-
 const port = process.env.PORT || 3000;
 app.set('port', port);
 

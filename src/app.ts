@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import { db } from './daos/db';
 import { tutorsRouter } from './routers/tutors-router';
 import { studentsRouter } from './routers/students-router';
+import { subjectsRouter } from './routers/subject-router';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 
 app.use('/tutors', tutorsRouter);
 app.use('/students', studentsRouter);
+app.use('/subjects', subjectsRouter);
 
 process.on('unhandledRejection', () => {
     db.end().then(() => {

@@ -5,7 +5,7 @@ export function getAllTutors(): Promise<Tutor[]> {
     const sql = 'SELECT * FROM tutors';
 
     // 1. Query database using sql statement above
-    // 2. Query will return a promise typed as QueryResult<PersonRow>
+    // 2. Query will return a promise typed as QueryResult<TutorRow>
     // 3. We can react to the database response by chaining a .then onto the query
     return db.query<TutorRow>(sql, []).then(result => {
         // 4. Extract rows from the query response
@@ -13,7 +13,7 @@ export function getAllTutors(): Promise<Tutor[]> {
 
         // console.log(rows);
 
-        // 5. Convert row data format to Person objects
+        // 5. Convert row data format to Tutor objects
         const tutors: Tutor[] = rows.map(row => Tutor.from(row));
         return tutors;
     });

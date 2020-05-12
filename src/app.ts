@@ -10,7 +10,7 @@ app.set('port', port);
 
 app.use(bodyParser.json());
 
-app.use('/users', tutorsRouter);
+app.use('/tutors', tutorsRouter);
 
 process.on('unhandledRejection', () => {
     db.end().then(() => {

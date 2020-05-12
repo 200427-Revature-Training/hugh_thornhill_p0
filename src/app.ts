@@ -10,6 +10,10 @@ app.set('port', port);
 
 app.use(bodyParser.json());
 
+// app.use((request, response, next) => {
+//     next();
+// });
+
 app.use('/tutors', tutorsRouter);
 
 process.on('unhandledRejection', () => {

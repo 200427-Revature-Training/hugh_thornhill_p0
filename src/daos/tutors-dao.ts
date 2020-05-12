@@ -40,7 +40,7 @@ export function saveTutor(tutor: Tutor): Promise<Tutor> {
 }
 
 export function patchTutor(tutor: Tutor): Promise<Tutor> {
-    const sql = `UPDATE tutor SET first_name = COALESCE($1, first_name), \
+    const sql = `UPDATE tutors SET first_name = COALESCE($1, first_name), \
     last_name =  COALESCE($2, last_name), birthdate = COALESCE($3, birthdate) \
     WHERE id = $4 RETURNING *`;
 

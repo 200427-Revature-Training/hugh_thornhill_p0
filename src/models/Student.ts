@@ -7,12 +7,23 @@ export class Student {
 
     static from(obj: StudentRow): Student {
         const student = new Student(
-            obj.id, obj.first_name, obj.last_name, new Date(obj.birthdate), obj.grade
+            obj.id,
+            obj.first_name,
+            obj.last_name,
+            new Date(obj.birthdate),
+            obj.grade
         );
         return student;
     }
 
-    constructor(id: number, firstName: string, lastName: string, birthdate: Date, grade: string) {
+    constructor(
+        id: number,
+        firstName: string,
+        lastName: string,
+        birthdate: Date,
+        grade: string
+    )
+    {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

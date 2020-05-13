@@ -33,7 +33,7 @@ export function saveStudent(student: Student): Promise<Student> {
 export function patchStudent(student: Student): Promise<Student> {
     const sql = `UPDATE students SET first_name = COALESCE($1, first_name), \
     last_name =  COALESCE($2, last_name), birthdate = COALESCE($3, birthdate), \
-    grade = COALESCE($4, grade), WHERE id = $5 RETURNING *`;
+    grade = COALESCE($4, grade) WHERE id = $5 RETURNING *`;
 
     const birthdate = student.birthdate && student.birthdate.toISOString();
 

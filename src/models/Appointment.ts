@@ -1,6 +1,5 @@
 export class Appointment {
     id: number;
-    appDate: Date;
     startTime: Date;
     endTime: Date;
     tutorId: number;
@@ -10,7 +9,6 @@ export class Appointment {
     static from(obj: AppointmentRow): Appointment {
         const appointment = new Appointment(
             obj.id,
-            new Date(obj.app_date),
             new Date(obj.start_time),
             new Date(obj.end_time),
             obj.tutor_id,
@@ -22,7 +20,6 @@ export class Appointment {
 
     constructor(
         id: number,
-        appDate: Date,
         startTime: Date,
         endTime: Date,
         tutorId: number,
@@ -31,18 +28,16 @@ export class Appointment {
         )
         {
         this.id = id;
-        this.appDate = appDate;
         this.startTime = startTime;
         this.endTime = endTime;
         this.tutorId = tutorId;
         this.studentId = studentId;
-        this.subjectId: subjectId;
+        this.subjectId = subjectId;
     }
 }
 
 export interface AppointmentRow {
     id: number;
-    app_date: string;
     start_time: string;
     end_time: string;
     tutor_id: number;

@@ -4,6 +4,7 @@ import { db } from './daos/db';
 import { tutorsRouter } from './routers/tutors-router';
 import { studentsRouter } from './routers/students-router';
 import { subjectsRouter } from './routers/subject-router';
+import { appointmentsRouter } from './routers/appointments-router';
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use('/tutors', tutorsRouter);
 app.use('/students', studentsRouter);
 app.use('/subjects', subjectsRouter);
+app.use('/appointments', appointmentsRouter);
 
 process.on('unhandledRejection', () => {
     db.end().then(() => {

@@ -21,7 +21,7 @@ studentsRouter.get('/:id', (request, response, next) => {
     if(!student) {
         response.sendStatus(404);
     } else {
-        response.json(student)
+        response.json(student);
     }
     next();
     }).catch(err => {

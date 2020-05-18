@@ -21,10 +21,9 @@ export function getAppointmentById(id: number): Promise<Appointment> {
 export function saveAppointment(appointment: Appointment): Promise<Appointment> {
     const sql = 'INSERT INTO appointments (start_time, end_time, tutor_id, student_id, subject_id) \
     VALUES ($1, $2, $3, $4, $5) RETURNING *';
-
     return db.query<AppointmentRow>(sql, [
-        appointment.startTime.toISOString(),
-        appointment.endTime.toISOString(),
+        appointment.startTime.toLocaleString(),
+        appointment.endTime.toLocaleString(),
         appointment.tutorId,
         appointment.studentId,
         appointment.subjectId
@@ -37,11 +36,11 @@ export function patchAppointment(appointment: Appointment): Promise<Appointment>
     student_id = COALESCE($4, student_id), subject_id = COALESCE($5, subject_id) \
     WHERE id = $6 RETURNING *`;
 
-    const startTime = appointment.startTime && appointment.startTime.toISOString();
-    const endTime = appointment.endTime && appointment.endTime.toISOString();
+    const startTime = appointment.startTime && appointment.startTime.toLocaleString();
+    const endTime = appointment.endTime && appointment.endTime.toLocaleString();
     const params = [
-                    appointment.startTime && appointment.startTime.toISOString(),
-                    appointment.endTime && appointment.endTime.toISOString(),
+                    appointment.startTime && appointment.startTime.toLocaleString(),
+                    appointment.endTime && appointment.endTime.toLocaleString(),
                     appointment.tutorId,
                     appointment.studentId,
                     appointment.subjectId,

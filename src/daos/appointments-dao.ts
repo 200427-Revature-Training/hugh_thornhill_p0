@@ -1,5 +1,8 @@
 import { db } from './db';
 import { Appointment, AppointmentRow } from '../models/Appointment';
+// const moment = require('moment-timezone');
+// moment().tz('America/New_York').format();
+
 
 export function getAllAppointments(): Promise<Appointment[]> {
     const sql = 'SELECT * FROM appointments';
@@ -21,9 +24,10 @@ export function getAppointmentById(id: number): Promise<Appointment> {
 export function saveAppointment(appointment: Appointment): Promise<Appointment> {
     const sql = 'INSERT INTO appointments (start_time, end_time, tutor_id, student_id, subject_id) \
     VALUES ($1, $2, $3, $4, $5) RETURNING *';
+
     return db.query<AppointmentRow>(sql, [
-        appointment.startTime.toLocaleString(),
-        appointment.endTime.toLocaleString(),
+        appointment.startTime.toLocaleString("en-us"),
+        appointment.endTime.toLocaleString("en-us"),
         appointment.tutorId,
         appointment.studentId,
         appointment.subjectId
@@ -36,16 +40,16 @@ export function patchAppointment(appointment: Appointment): Promise<Appointment>
     student_id = COALESCE($4, student_id), subject_id = COALESCE($5, subject_id) \
     WHERE id = $6 RETURNING *`;
 
-    const startTime = appointment.startTime && appointment.startTime.toLocaleString();
-    const endTime = appointment.endTime && appointment.endTime.toLocaleString();
+    const startTime = appointment.startTime && appointment.startTime.toLocaleString("en-us");
+    const endTime = appointment.endTime && appointment.endTime.toLocaleString("en-us");
     const params = [
-                    appointment.startTime && appointment.startTime.toLocaleString(),
-                    appointment.endTime && appointment.endTime.toLocaleString(),
+                    appointment.startTime && appointment.startTime.toLocaleString("en-us"),
+                    appointment.endTime && appointment.endTime.toLocaleString("en-us"),
                     appointment.tutorId,
                     appointment.studentId,
                     appointment.subjectId,
                     appointment.id
-                    ];
+                    ] ;
 
         return db.query<AppointmentRow>(sql, params)
             .then(result => result.rows.map(row => Appointment.from(row))[0]);

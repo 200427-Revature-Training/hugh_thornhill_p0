@@ -1,24 +1,25 @@
 import { db } from './db';
 import { Appointment, AppointmentRow } from '../models/Appointment';
+import { AppointmentView, AppointmentViewRow } from '../models/AppointmentView';
 // const moment = require('moment-timezone');
 // moment().tz('America/New_York').format();
 
 
-export function getAllAppointments(): Promise<Appointment[]> {
-    const sql = 'SELECT * FROM appointments';
+export function getAllAppointments(): Promise<AppointmentView[]> {
+    const sql = 'SELECT * FROM appointments_full_views;';
 
-    return db.query<AppointmentRow>(sql, []).then(result => {
-        const rows: AppointmentRow[] = result.rows;
-        const appointments: Appointment[] = rows.map(row => Appointment.from(row));
+    return db.query<AppointmentViewRow>(sql, []).then(result => {
+        const rows: AppointmentViewRow[] = result.rows;
+        const appointments: AppointmentView[] = rows.map(row => AppointmentView.from(row));
         return appointments;
     });
 }
 
-export function getAppointmentById(id: number): Promise<Appointment> {
-    const sql = 'SELECT * FROM appointments WHERE id = $1';
+export function getAppointmentById(id: number): Promise<AppointmentView> {
+    const sql = 'SELECT * FROM appointments_full_views WHERE id = $1';
 
-    return db.query<AppointmentRow>(sql, [id])
-        .then(result => result.rows.map(row => Appointment.from(row))[0]);
+    return db.query<AppointmentViewRow>(sql, [id])
+        .then(result => result.rows.map(row => AppointmentView.from(row))[0]);
 }
 
 export function saveAppointment(appointment: Appointment): Promise<Appointment> {

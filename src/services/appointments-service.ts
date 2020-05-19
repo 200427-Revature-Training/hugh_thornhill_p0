@@ -1,11 +1,12 @@
 import { Appointment } from '../models/Appointment';
 import * as appointmentsDao from '../daos/appointments-dao';
+import { AppointmentView } from '../src/models/AppointmentView';
 
-export function getAllAppointments(): Promise<Appointment[]> {
+export function getAllAppointments(): Promise<AppointmentView[]> {
     return appointmentsDao.getAllAppointments();
 }
 
-export function getAppointmentById(id: number): Promise<Appointment> {
+export function getAppointmentById(id: number): Promise<AppointmentView> {
     return appointmentsDao.getAppointmentById(id);
 }
 

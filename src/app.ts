@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import { db } from './daos/db';
 import { tutorsRouter } from './routers/tutors-router';
 import { studentsRouter } from './routers/students-router';
-import { subjectsRouter } from './routers/subject-router';
+import { subjectsRouter } from './routers/subjects-router';
 import { appointmentsRouter } from './routers/appointments-router';
 
 const app = express();

@@ -60,6 +60,39 @@ describe('POST /tutors', () => {
     });
 });
 
+describe('Patch /tutorss/', () => {
+    test('Normal behavior patching tutor id status 200', async () => {
+        mockTutorsService.patchTutor.mockImplementation(async () => ({}));
+
+        const payload = {
+            id: 1,
+            firstName: 'Waylon',
+            lastName: 'Smithers',
+            birthdate: '2000-01-01',
+        };
+
+        await request(app)
+        .patch('/tutors')
+        .send(payload)
+        .expect(200)
+        .expect('content-type', 'application/json; charset=utf-8')
+});
+
+test('Patch error', async () => {
+    mockTutorsService.patchTutor.mockImplementation(async () => {throw new Error()});
+    const payload = {
+        firstName: 'Waylon',
+        lastName: 'Smithers',
+        birthdate: '2000-01-01',
+    };
+
+    await request(app)
+    .patch('/tutors')
+    .send(payload)
+    .expect(500);
+    });
+});
+
 describe('GET /tutors/:id', () => {
     test('Normal behavior Json with status 200', async () => {
         // parenthesis around empty object (curly brackets) forces it to interperet as an empty object

@@ -6,6 +6,40 @@ jest.mock('../../../src/daos/tutors-dao');
 
 const mockTutorsDao = tutorsDao as any;
 
+describe('Get all tutors', () => {
+    test('Get all tutors normal conditions', async () => {
+        expect.assertions(1);
+        mockTutorsDao.getAllTutors.mockImplementation( async () => {
+             console.log('This is what mock dao actually calls');
+          });
+
+          const result = await tutorService.getAllTutors();
+
+          try {
+              expect(result).toContain([])
+          } catch (err) {
+              expect(err).toBeDefined();
+          }
+    });
+});
+
+describe('Get tutors by id ', () => {
+    test('Get tutors by id normal conditions', async () => {
+        expect.assertions(1);
+        mockTutorsDao.getTutorById.mockImplementation( async () => {
+             console.log('This is what mock dao actually calls');
+          });
+
+          const result = await tutorService.getTutorById(1);
+
+          try {
+              expect(result).toContain(Tutor)
+          } catch (err) {
+              expect(err).toBeDefined();
+          }
+    });
+});
+
 describe('saveTutor', () => {
     test('422 returned if no firstName provided', async () => {
         expect.assertions(1);
@@ -16,7 +50,7 @@ describe('saveTutor', () => {
         const payload = {
             lastName: 'Smithers',
             birthdate: '2000-01-01'
-        }
+        };
 
         try {
             await tutorService.saveTutor(payload);

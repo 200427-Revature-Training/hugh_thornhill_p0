@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { db } from './db';
 import { Tutor, TutorRow } from '../models/Tutor';
 

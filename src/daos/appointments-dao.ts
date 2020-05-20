@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { db } from './db';
 import { Appointment, AppointmentRow } from '../models/Appointment';
 import { AppointmentView, AppointmentViewRow } from '../models/AppointmentView';

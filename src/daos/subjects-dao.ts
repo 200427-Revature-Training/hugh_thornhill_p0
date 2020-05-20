@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { db } from './db';
 import { Subject, SubjectRow } from '../models/Subject';
 
